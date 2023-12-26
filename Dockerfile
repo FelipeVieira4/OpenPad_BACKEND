@@ -1,19 +1,20 @@
-FROM maven:latest AS build
+FROM gradle:8.5.0-jdk21-jammy as BUILDER
 
-# Defina variáveis de ambiente para o projeto
+
 ENV PROJECT_NAME=sprintTest
 ENV PROJECT_PATH=/app/${PROJECT_NAME}
 
 RUN mkdir -p ${PROJECT_PATH}
 
 WORKDIR ${PROJECT_PATH}
-COPY . ${PROJECT_PATH}
 
+COPY . .
 
-RUN mvn clean package -Dmaven.test.skip=true
+RUN gradle clean build -x test
 
-#Executar
 FROM eclipse-temurin:21
 
-COPY ${PROJECT_PATH}/target/*.jar /app/app.jar
-CMD ["java", "-jar", "/app/app.jar"]
+COPY --from=BUILDER ${PROJECT_PATH}/build/libs/backEnd-0.0.1-SNAPSHOT.jar app.jar
+
+EXPOSE 8080
+CMD ["java", "-jar", "app.jar"]
