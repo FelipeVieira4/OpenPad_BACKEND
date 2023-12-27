@@ -5,9 +5,7 @@ ENV PROJECT_NAME=sprintTest
 ENV PROJECT_PATH=/app/${PROJECT_NAME}
 
 RUN mkdir -p ${PROJECT_PATH}
-
 WORKDIR ${PROJECT_PATH}
-
 COPY . .
 
 RUN gradle clean build -x test

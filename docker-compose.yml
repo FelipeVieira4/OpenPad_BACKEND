@@ -7,6 +7,11 @@ services:
     build: .
     depends_on:
       - db
+    deploy:
+      resources:
+        limits:
+          cpus: 1
+          memory: 750MB
     restart: always
   db:
     image: postgres:latest
@@ -15,5 +20,5 @@ services:
       resources:
         limits:
           cpus: 1
-          memory: 1GB
+          memory: 500MB
     restart: always
