@@ -8,15 +8,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "content_table")
-public class MensagemModel implements Serializable{
+@Table(name= "content_table")
+public class MensageTable implements Serializable{
+  private static final long serialVersionUID= 1L;
 
   @Id
   private String id;
 
-  @Column(name="content")
+  @Column(name = "content")
   private String content;
-
 
   public String getId() {
     return id;
@@ -33,4 +33,6 @@ public class MensagemModel implements Serializable{
   public void setContent(String content) {
     this.content = content;
   }
+
+
 }
