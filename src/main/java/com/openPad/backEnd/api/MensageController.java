@@ -38,14 +38,6 @@ public class MensageController {
     //Método indicado pela Intellij
     return mensageTableOptional.map(mensageTable -> ResponseEntity.ok((MensageTable) mensageTable)).orElseGet(() -> ResponseEntity.notFound().build());
 
-    /*
-    if (mensageTableOptional.isPresent()) {
-      return ResponseEntity.ok((MensageTable)mensageTableOptional.get());
-    }
-    else {
-      return ResponseEntity.notFound().build();
-    }
-    */
   }
 
 }
