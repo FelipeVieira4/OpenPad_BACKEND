@@ -37,5 +37,4 @@ services:
     depends_on:
       - api
     ports:
-      - "9999:9999"
-    
+      - "9999:80"
